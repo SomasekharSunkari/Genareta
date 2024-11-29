@@ -2,7 +2,6 @@ import { useContext, useState } from "react"
 import { assets } from "../assets/assets"
 import { motion } from "motion/react"
 import { AppContext } from "../Components/Context"
-import { useNavigate } from "react-router-dom"
 
 const Result = () => {
     const [image, setImage] = useState(assets.sample_img_1)

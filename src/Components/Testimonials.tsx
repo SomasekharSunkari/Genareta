@@ -41,7 +41,7 @@ const Testimonials = () => {
                                 {/* <img src={testimonial.stars} alt="" /> */}
                                 <div className="flex mb-4">
                                     {Array(testimonial.stars).fill("").map((star, index) => (
-                                        <img key={index} src={assets.rating_star} alt="star" className="mr-1" />
+                                        <img key={index + star} src={assets.rating_star} alt="star" className="mr-1" />
                                     ))}
 
                                 </div>
