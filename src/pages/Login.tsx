@@ -126,13 +126,23 @@ const Login = () => {
                 {status === "Login" ? (
                     <div>
                         <p className="text-center mt-4 text-sm">
-                            Don’t have an account? <a href="#" className="text-orange-600 cursor-pointer" onClick={() => setStatus("SignUp")}>Sign up</a>
+                            Don’t have an account? <a href="#" className="text-orange-600 cursor-pointer" onClick={() => {
+                                setEmail("")
+                                setPassword("")
+                                setStatus("SignUp")
+                            }}>Sign up</a>
                         </p>
                     </div>
                 ) : (
                     <div>
                         <p className="text-center mt-4 text-sm">
-                            Already have an account? <a href="#" className="text-orange-600 cursor-pointer" onClick={() => setStatus("Login")}>Login here</a>
+                            Already have an account? <a href="#" className="text-orange-600 cursor-pointer" onClick={() => {
+                                setStatus("Login")
+                                setusername("")
+                                setEmail("")
+                                setPassword("")
+
+                            }}>Login here</a>
                         </p>
                     </div>
                 )}

@@ -1,19 +1,20 @@
 import { useContext, useState } from "react"
 import { assets } from "../assets/assets"
 import { motion } from "motion/react"
+import { useNavigate } from "react-router-dom"
 import { AppContext } from "../Components/Context"
 
 const Result = () => {
     const [image, setImage] = useState(assets.sample_img_1)
     const [input, setInput] = useState("")
     const [isImageLoading, setImageLoading] = useState(false);
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const context = useContext(AppContext)
     const handleClick: React.MouseEventHandler<HTMLParagraphElement> = (event) => {
         event.preventDefault();
-        location.reload()
-        // Your code here
+        navigate("/result")
+
     };
 
     const onsubmitHndler = async (e: { preventDefault: () => void }) => {
