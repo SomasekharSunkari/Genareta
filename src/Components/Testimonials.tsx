@@ -20,11 +20,11 @@ const Testimonials = () => {
         <motion.div initial="hidden"
             whileInView="visible"
             variants={parentVariants}
-            className="flex flex-wrap flex-col items-center justify-center my-20 py-12">
+            className="flex flex-wrap flex-col items-center justify-center  my-20 py-12">
 
             <h1 className="text-3xl sm:text-4xl font-semibold mb-2">Customer testimonials</h1>
             <p className="text-gray-500 mb-8">What Our Users Are Saying</p>
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-col md:flex-row flex-wrap gap-6">
                 {
                     testimonialsData.map((testimonial, index) => (
                         <motion.div key={index} whileHover={{ scale: 1.15 }}

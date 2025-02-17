@@ -17,6 +17,7 @@ interface AppContextType {
     setCredit: Dispatch<SetStateAction<boolean>>,
     logout: () => void,
     loadCreditData: () => void;
+    loadUserimages: () => Promise<any>
 }
 export const AppContext = createContext<AppContextType | null>(null);
 const backendUrl: string = import.meta.env.VITE_BACKEND_URL
@@ -28,6 +29,7 @@ const AppContextProvider = ({ children }: React.PropsWithChildren) => {
     useEffect(() => {
         if (token)
             loadCreditData()
+        loadUserimages()
 
     }, [token])
     const navigate = useNavigate();
@@ -38,6 +40,20 @@ const AppContextProvider = ({ children }: React.PropsWithChildren) => {
         setUser("null")
         navigate("/");
         location.reload()
+    }
+    const loadUserimages = async () => {
+
+        try {
+            const { data } = await axios.get(backendUrl + "/api/image/getimages", { headers: { token } })
+            if (data.success) {
+
+                return data.images;
+            }
+        }
+        catch (err: any) {
+            console.log(err.message)
+        }
+
     }
     const generateImage = async (prompt: string) => {
         try {
@@ -93,7 +109,7 @@ const AppContextProvider = ({ children }: React.PropsWithChildren) => {
         backendUrl,
         token,
         setToken,
-        credit, setCredit, logout, loadCreditData
+        credit, setCredit, logout, loadCreditData, loadUserimages
     }
     return <AppContext.Provider value={values} >{children}</AppContext.Provider>
 }
